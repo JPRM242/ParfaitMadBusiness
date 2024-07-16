@@ -31,7 +31,7 @@ const createUser = async (req, res) => {
 
         const mailOptions = {
           from: 'josuemadingou5@gmail.com',
-          to: 'madingoujosuepr@gmail.com',
+          to: 'emmanuelnzaou@gmail.com',
           subject: 'Utilisateur enregistré',
           html: emailContent
         }
