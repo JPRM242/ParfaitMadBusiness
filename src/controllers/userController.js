@@ -44,10 +44,11 @@ const createUser = async (req, res) => {
           }
         });
 
-        res.status(201).json({message: msg, data: data})
+        return res.status(201).json({message: msg, data: data})
     } catch (error) {
         const msg = 'Erreur lors de l\'enregistrement : '
-        res.status(500).json({message: msg, data: error})
+        console.log(`${msg} : ${error}`);
+        return res.status(500)
     }
     await db.deconnexion()
 }
@@ -56,9 +57,9 @@ const getAllUsers = async (req, res) => {
     await db.connexion();
     try {
       const data = await User.find();
-      res.status(200).json({ message: 'Utilisateurs récupérés avec succès', data: data });
+      return res.status(200).json({ message: 'Utilisateurs récupérés avec succès', data: data });
     } catch (error) {
-      res.status(500).json({ message: 'Erreur lors de la récupération : ', error });
+      return res.status(500).json({ message: 'Erreur lors de la récupération : ', error });
     }
     await db.deconnexion();
   };
